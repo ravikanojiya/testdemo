@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftdiv {
+  width: 5%;
+  height: 100vh;
+  background-color: #f5f8fa;
+  padding: 20px;
+  position: fixed;
+}
+.rightdiv {
+  position: absolute;right: 0;
+  width: 95%;
+  height: 100vh;
+  padding: 20px;
+}
+.bg {
+  background-color: #f5f8fa;
+}
+.nav {
+  margin-top: 30px;
+}
+.nav a {
+  margin-top: 15px;
+  display: block;
+}
+
+.fa {
+  color: #000;
+}
+.fa:hover {
+  color: #3482b9;
+}
+.fa:hover ~ .fa-star-o{background-color: #3482b9;}
+
+/* td{border: 1px solid #3482b9;} */
+/*.btnback{padding: 10px;border: none;background-color: #f5f8fa;color: #000;text-decoration: none;border-radius: 6px;}
+.btnback:hover{color: #3482b9;}
+.btnback:hover .fa{color: #3482b9;} */
+.tbl {
+  width: 100%;
+}
+

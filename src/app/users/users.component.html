@@ -1,0 +1,63 @@
+<div class="card" style="margin-top: 20px;">
+
+  <p-table #dt [value]="userlist" sortMode="multiple" [paginator]="true" [rows]="15" [totalRecords]="totalRecords"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[15,25,50]" [(selection)]="userlist1" dataKey="id"
+    [globalFilterFields]="['first_name','last_name','email']" [metaKeySelection]="true"
+    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Search Users..." />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" *ngIf="!loading">
+      <tr style="background-color: #3482b9;">
+        <th pSortableColumn="first_name">FirstName <p-sortIcon field="first_name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="last_name">LastName <p-sortIcon field="last_name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon>
+        </th>
+        <th pSortableColumn="phone_number">PhoneNumber <p-sortIcon field="phone_number"></p-sortIcon>
+        </th>
+        <th pSortableColumn="company_name">CompanyName <p-sortIcon field="company_name"></p-sortIcon>
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <p-progressBar mode="indeterminate" [style]="{'height': '4px'}" *ngIf="!userlist"></p-progressBar>
+        </td>
+      </tr>
+
+    </ng-template>
+    <ng-template pTemplate="body" let-userlist1 let-rowIndex="rowIndex">
+      <tr [pSelectableRow]="userlist1" [pSelectableRowIndex]="rowIndex">
+        <td> {{userlist1.first_name}}</td>
+        <td>{{userlist1.last_name}}</td>
+        <td>{{userlist1.email}}</td>
+        <td>{{userlist1.phone_number}}</td>
+        <td>{{userlist1.company_name}}</td>
+        <td>
+          <p-tableCheckbox   [value]="userlist1" ></p-tableCheckbox>
+        </td>
+        <td>
+          <a *ngIf="show" (click)="getfav(userlist1.id)"><i class="fa fa-star-o fa-2x" aria-hidden="true"></i></a>
+          <a *ngIf="!show" (click)="getnotfav(userlist1.id)"><i class="fa fa-star fa-2x" aria-hidden="true"></i></a>
+          <!-- <ng-template #elseBlock><i class="fa fa-star fa-2x" aria-hidden="true"></i></ng-template> -->
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6">No User found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
