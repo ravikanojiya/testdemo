@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { data } from "jquery";
 import { Intusers } from "../intusers";
 import { ServiceService } from "../service.service";
 
@@ -14,14 +12,14 @@ export class FavouritComponent implements OnInit {
   userby: any;
 
   id: number;
-  constructor(private service: ServiceService, private route: ActivatedRoute) {}
+  constructor(private service: ServiceService) {}
 
   ngOnInit() {
-    this.userby = localStorage.getItem("data");
+    // this.userby = localStorage.getItem("data");
 
-    this.service.getuser().then((res) => {
-      this.userby = res;
-      console.log(this.userby);
-    });
+    // this.service.getuser().then((res) => {
+    //   this.userby = res;
+    //   console.log(this.userby);
+    // });
   }
 }
